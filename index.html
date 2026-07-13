@@ -649,22 +649,7 @@
     <span id="music-icon">🔇</span>
   </button>
 
-  <!-- Welcome Veil Overlay (Slides open on interaction) -->
-  <div id="veil-overlay" onclick="openVeil()">
-    <div class="veil-half veil-top">
-      <div class="veil-inner">
-        <!-- Arabic Bismillah Calligraphy (Custom font & responsive sizing) -->
-        <div class="veil-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-      </div>
-    </div>
-    <div class="veil-half veil-bottom">
-      <div class="veil-inner">
-        <div class="veil-symbol">✦</div>
-        <div class="veil-brand">YOU ARE INVITED</div>
-        <div class="veil-instruction">TAP TO OPEN</div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Main Invitation Website -->
   <div id="invitation">
@@ -897,22 +882,17 @@
 
     musicControl.addEventListener('click', () => toggleMusic());
 
-    // Veil Overlay Curtain Opening Logic
-    function openVeil() {
-      const veil = document.getElementById('veil-overlay');
-      if (!veil.classList.contains('veil-opened')) {
-        veil.classList.add('veil-opened');
-        // Play background audio on user interaction
-        toggleMusic(true);
-        // Trigger subtle celebration when veil opens
-        if (window.triggerCelebration) {
-          window.triggerCelebration(20, 4);
-        }
-        setTimeout(() => {
-          veil.classList.add('hidden');
-        }, 1400);
+    // Start background music and trigger welcome balloons/confetti on first user interaction
+    function startMusicOnFirstInteraction() {
+      toggleMusic(true);
+      if (window.triggerCelebration) {
+        window.triggerCelebration(25, 6);
       }
+      document.removeEventListener('click', startMusicOnFirstInteraction);
+      document.removeEventListener('touchstart', startMusicOnFirstInteraction);
     }
+    document.addEventListener('click', startMusicOnFirstInteraction);
+    document.addEventListener('touchstart', startMusicOnFirstInteraction);
 
     // Countdown Logic (Target is 7:00 PM / 19:00:00)
     const targetDate = new Date('2026-07-18T19:00:00');
