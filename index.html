@@ -21,8 +21,8 @@
     :root {
       --gold: #C99E32;
       --gold-light: #E6C875;
-      --gold-dim: rgba(201, 158, 50, 0.2);
-      --gold-glow: rgba(201, 158, 50, 0.4);
+      --gold-dim: rgba(201, 158, 50, 0.12);
+      --gold-glow: rgba(201, 158, 50, 0.35);
       --ivory: #FAF6F0;
       --ivory-card: #FFFFFF;
       --text-main: #1A2E26;
@@ -170,7 +170,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.22;
+      opacity: 0.25;
       mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
     }
@@ -440,11 +440,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
       flex-shrink: 0;
-      color: var(--gold);
       background: #FAF6F0;
       box-shadow: 0 2px 8px rgba(201, 158, 50, 0.05);
+    }
+
+    .detail-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold);
     }
     
     .detail-body {
@@ -549,35 +553,6 @@
       line-height: 1.85;
     }
     
-    /* RSVP Buttons */
-    .msg-btn {
-      background: var(--gold);
-      border: none;
-      color: #FFFFFF;
-      padding: 1rem 2rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: var(--radius);
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      display: block;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(201, 158, 50, 0.25);
-    }
-    
-    .msg-btn:hover {
-      background: #b58d28;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(201, 158, 50, 0.35);
-    }
-    
     /* Closing Section */
     .inv-closing {
       padding: clamp(3rem, 8vw, 5rem) 0;
@@ -675,7 +650,7 @@
 
   <!-- Main Invitation Website -->
   <div id="invitation">
-    <!-- Particles Canvas Overlay for Floating Golden Dust -->
+    <!-- Particles Canvas Overlay for Floating Golden Dust & Celebration Elements -->
     <canvas id="particles-canvas"></canvas>
     
     <!-- Top Geometric Accents -->
@@ -698,9 +673,9 @@
       <path d="M40 2 Q40 15 27 15" stroke="#C99E32" stroke-width="0.6"/>
     </svg>
 
-    <!-- Hero Header (Uses local Hero Image.jpeg) -->
+    <!-- Hero Header (Uses local Hero Banner 2.jpeg) -->
     <div class="inv-hero">
-      <div class="hero-photo" style="background-image: url('Hero Image.jpeg');"></div>
+      <div class="hero-photo" style="background-image: url('Hero Banner 2.jpeg');"></div>
       <div class="hero-celestial">
         <svg width="220" height="220" viewBox="0 0 100 100" fill="none">
           <circle cx="50" cy="50" r="45" stroke="#C99E32" stroke-width="0.35" stroke-dasharray="2 2" opacity="0.6"/>
@@ -716,7 +691,7 @@
       </div>
     </div>
 
-    <!-- Countdown Timer Section -->
+    <!-- Countdown Timer Section (Target is 7:00 PM) -->
     <div class="inv-section">
       <div class="inv-section-inner reveal-on-scroll">
         <div class="section-eyebrow">COUNTDOWN</div>
@@ -744,7 +719,7 @@
       </div>
     </div>
 
-    <!-- Scratch to Reveal Card Section -->
+    <!-- Scratch to Reveal Card Section (Reveals 7:00 PM) -->
     <div class="inv-section">
       <div class="inv-section-inner reveal-on-scroll" style="text-align: center;">
         <div class="section-eyebrow">BLESSING</div>
@@ -753,7 +728,7 @@
         
         <div class="scratch-wrapper" id="scratch-wrapper">
           <div class="scratch-revealed">
-            <div class="scratch-text">18th July 2026<br><span style="font-size: 13px; color: var(--gold); font-family: 'Inter', sans-serif;">8:30 PM Onwards</span></div>
+            <div class="scratch-text">18th July 2026<br><span style="font-size: 13px; color: var(--gold); font-family: 'Inter', sans-serif;">7:00 PM Onwards</span></div>
           </div>
           <canvas id="scratch-canvas"></canvas>
         </div>
@@ -770,27 +745,47 @@
         
         <div class="detail-card">
           <div class="detail-row">
-            <div class="detail-icon">📅</div>
+            <!-- Calendar SVG -->
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="detail-body">
               <div class="detail-label">Date</div>
               <div class="detail-value">Saturday, 18th July 2026</div>
             </div>
           </div>
           <div class="detail-row">
-            <div class="detail-icon">🕗</div>
+            <!-- Clock SVG -->
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <div class="detail-body">
               <div class="detail-label">Time</div>
-              <div class="detail-value">8:30 PM Onwards</div>
+              <div class="detail-value">7:00 PM Onwards</div>
             </div>
           </div>
           <div class="detail-row">
-            <div class="detail-icon">📍</div>
+            <!-- Map Pin SVG -->
+            <div class="detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
             <div class="detail-body">
               <div class="detail-label">Venue</div>
               <div class="detail-value">Jalsa Lawn & Banquet, Pokharpur, Lal Bangla, Kanpur, Uttar Pradesh 208007</div>
               <!-- Google Maps Link Button -->
               <a href="https://www.google.com/maps/search/?api=1&query=Jalsa+Lawn+%26+Banquet+Lal+Bangla+Kanpur" target="_blank" rel="noopener noreferrer" class="gold-btn">
-                📍 View on Google Maps
+                View on Google Maps
               </a>
             </div>
           </div>
@@ -798,7 +793,7 @@
       </div>
     </div>
 
-    <!-- Gallery Section (Uses local Gallery images) -->
+    <!-- Gallery Section (Uses local Gallery images 1 & 2) -->
     <div class="inv-section">
       <div class="inv-section-inner reveal-on-scroll">
         <div class="section-eyebrow">GALLERY</div>
@@ -811,9 +806,6 @@
           </div>
           <div class="gallery-item">
             <img src="Gallery image 2.jpeg" alt="Sweet Moment 2" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="Gallery image 3.jpeg" alt="Sweet Moment 3" loading="lazy">
           </div>
         </div>
       </div>
@@ -832,15 +824,17 @@
       </div>
     </div>
 
-    <!-- RSVP RSVP Section -->
+    <!-- Remember in Dua Section (Replaces RSVP section without emojis) -->
     <div class="inv-section">
       <div class="inv-section-inner reveal-on-scroll" style="text-align: center;">
-        <div class="section-eyebrow">RSVP</div>
-        <div class="section-title">Join Our Celebration</div>
+        <div class="section-eyebrow">REMEMBER IN DUA</div>
+        <div class="section-title">Requesting Your Prayers</div>
         <div class="gold-divider"><div class="line"></div><div class="motif">✦</div><div class="line"></div></div>
-        <a href="https://wa.me/+918888888888?text=I%20will%20be%20happy%20to%20attend%20the%20Aqiqah%20ceremony%20of%20Sariym%20Hasan!" target="_blank" rel="noopener noreferrer" class="msg-btn">
-          💬 RSVP via WhatsApp
-        </a>
+        <div class="note-box">
+          <p class="note-text" style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-family: 'Cormorant Garamond', serif; font-weight: 500; color: var(--text-main);">
+            Please remember our beloved son Sariym Hasan and our family in your prayers. Your duas and blessings are the most precious gifts to us.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -892,14 +886,18 @@
         veil.classList.add('veil-opened');
         // Play background audio on user interaction
         toggleMusic(true);
+        // Trigger subtle celebration when veil opens
+        if (window.triggerCelebration) {
+          window.triggerCelebration(20, 4);
+        }
         setTimeout(() => {
           veil.classList.add('hidden');
         }, 1400);
       }
     }
 
-    // Countdown Logic
-    const targetDate = new Date('2026-07-18T20:30:00');
+    // Countdown Logic (Target is 7:00 PM / 19:00:00)
+    const targetDate = new Date('2026-07-18T19:00:00');
     function updateCountdown() {
       const diff = targetDate - new Date();
       if (diff <= 0) {
@@ -977,6 +975,12 @@
           canvas.style.opacity = '0';
           const hint = document.getElementById('scratch-hint');
           if (hint) hint.textContent = '✦ The blessed date is revealed!';
+          
+          // Trigger Balloon & Confetti Celebration
+          if (window.triggerCelebration) {
+            window.triggerCelebration(50, 15);
+          }
+          
           setTimeout(() => {
             canvas.style.display = 'none';
           }, 600);
@@ -1030,7 +1034,7 @@
       canvas.addEventListener('touchend', () => painting = false);
     })();
 
-    // Floating Golden Particles/Sparkle Background Animation
+    // Particles, Balloons, and Confetti Background Animation System
     (function() {
       const canvas = document.getElementById('particles-canvas');
       if (!canvas) return;
@@ -1042,18 +1046,19 @@
       canvas.height = H;
 
       const particles = [];
-      const particleCount = Math.min(60, Math.floor(W / 12));
+      const goldDustCount = Math.min(60, Math.floor(W / 12));
 
-      class Particle {
+      // Golden Dust Particles
+      class Dust {
         constructor() {
           this.reset();
         }
         reset() {
           this.x = Math.random() * W;
-          this.y = Math.random() * H + H * 0.1; // Spawn across vertical scroll
+          this.y = Math.random() * H + H * 0.1;
           this.size = Math.random() * 2 + 1;
-          this.speedY = -(Math.random() * 0.5 + 0.2); // Slow upward float
-          this.speedX = Math.random() * 0.3 - 0.15; // Slow sway
+          this.speedY = -(Math.random() * 0.5 + 0.2);
+          this.speedX = Math.random() * 0.3 - 0.15;
           this.opacity = Math.random() * 0.5 + 0.25;
           this.fadeSpeed = Math.random() * 0.005 + 0.002;
         }
@@ -1061,8 +1066,6 @@
           this.y += this.speedY;
           this.x += this.speedX;
           this.opacity -= this.fadeSpeed;
-
-          // Re-spawn bottom or if faded out
           if (this.y < 0 || this.opacity <= 0) {
             this.reset();
             this.y = H;
@@ -1072,23 +1075,167 @@
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(201, 158, 50, ${this.opacity})`;
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = '#E6C875';
           ctx.fill();
-          ctx.shadowBlur = 0; // Reset shadow for efficiency
         }
       }
 
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+      // Confetti Class
+      class Confetti {
+        constructor() {
+          this.x = Math.random() * W;
+          this.y = window.scrollY + window.innerHeight + 20; // Spawn just below screen
+          this.size = Math.random() * 6 + 4;
+          this.speedY = -(Math.random() * 4 + 3);
+          this.speedX = Math.random() * 4 - 2;
+          this.rotation = Math.random() * 360;
+          this.rotationSpeed = Math.random() * 10 - 5;
+          
+          // Confetti color palette matching gold/ivory/rose
+          const colors = [
+            '#C99E32', // Gold
+            '#E6C875', // Light gold
+            '#D4AF37', // Metallic gold
+            '#8B6F23', // Bronze
+            '#FAF6F0', // Ivory
+            '#E0D5C1'  // Pale bronze
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.opacity = 1;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          this.speedY += 0.05; // Gravity slowdown
+          this.rotation += this.rotationSpeed;
+          if (this.speedY > 0) {
+            this.opacity -= 0.015; // Fade out as they start to fall
+          }
+          return this.opacity > 0 && this.y < H;
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation * Math.PI / 180);
+          ctx.fillStyle = this.color;
+          ctx.globalAlpha = this.opacity;
+          ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+          ctx.restore();
+        }
       }
+
+      // Balloon Class
+      class Balloon {
+        constructor() {
+          this.x = Math.random() * (W - 80) + 40;
+          this.y = window.scrollY + window.innerHeight + 50;
+          this.r = Math.random() * 15 + 20; // Balloon radius
+          this.h = this.r * 1.25; // Balloon height
+          this.speedY = -(Math.random() * 2 + 1.5);
+          this.swaySpeed = Math.random() * 0.02 + 0.01;
+          this.swayRange = Math.random() * 20 + 10;
+          this.swayAngle = Math.random() * Math.PI * 2;
+          this.stringLength = this.r * 2.5;
+
+          // Elegant soft balloon colors
+          const colors = [
+            { fill: '#C99E32', highlight: '#E6C875' }, // Gold
+            { fill: '#E6C875', highlight: '#FFFFFF' }, // Ivory Gold
+            { fill: '#D4AF37', highlight: '#FFF0D0' }, // Metallic
+            { fill: '#1A2E26', highlight: '#4D6B5E' }, // Forest Green contrast
+            { fill: '#F4EFE6', highlight: '#FFFFFF' }  // Ivory
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+          this.y += this.speedY;
+          this.swayAngle += this.swaySpeed;
+          this.xOffset = Math.sin(this.swayAngle) * this.swayRange;
+          return this.y > window.scrollY - 150; // Keep alive until fully off top screen
+        }
+        draw() {
+          const drawX = this.x + this.xOffset;
+          const drawY = this.y;
+
+          ctx.save();
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'rgba(0,0,0,0.06)';
+
+          // Draw String
+          ctx.beginPath();
+          ctx.moveTo(drawX, drawY + this.h);
+          ctx.quadraticCurveTo(
+            drawX + Math.sin(this.swayAngle) * 5, 
+            drawY + this.h + this.stringLength / 2, 
+            drawX, 
+            drawY + this.h + this.stringLength
+          );
+          ctx.strokeStyle = 'rgba(26, 46, 38, 0.25)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Draw Balloon Shape (Oval-like)
+          ctx.beginPath();
+          ctx.moveTo(drawX, drawY + this.h);
+          ctx.bezierCurveTo(drawX - this.r, drawY + this.h, drawX - this.r, drawY, drawX, drawY);
+          ctx.bezierCurveTo(drawX + this.r, drawY, drawX + this.r, drawY + this.h, drawX, drawY + this.h);
+          
+          // Gold / Highlight gradient
+          const radGrad = ctx.createRadialGradient(
+            drawX - this.r/3, drawY + this.r/3, this.r/6,
+            drawX, drawY + this.r/2, this.r
+          );
+          radGrad.addColorStop(0, this.color.highlight);
+          radGrad.addColorStop(1, this.color.fill);
+
+          ctx.fillStyle = radGrad;
+          ctx.fill();
+
+          // Balloon knot/tie at the bottom
+          ctx.beginPath();
+          ctx.moveTo(drawX, drawY + this.h);
+          ctx.lineTo(drawX - 4, drawY + this.h + 5);
+          ctx.lineTo(drawX + 4, drawY + this.h + 5);
+          ctx.closePath();
+          ctx.fillStyle = this.color.fill;
+          ctx.fill();
+
+          ctx.restore();
+        }
+      }
+
+      // Initialize golden dust
+      for (let i = 0; i < goldDustCount; i++) {
+        particles.push(new Dust());
+      }
+
+      // Trigger celebration function (called on reveal or open)
+      window.triggerCelebration = function(confettiQty = 40, balloonQty = 12) {
+        for (let i = 0; i < confettiQty; i++) {
+          particles.push(new Confetti());
+        }
+        for (let i = 0; i < balloonQty; i++) {
+          particles.push(new Balloon());
+        }
+      };
 
       function animate() {
         ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-          p.update();
-          p.draw();
-        });
+        
+        // Loop backwards to allow safe removal of spent particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          if (p instanceof Dust) {
+            p.update();
+            p.draw();
+          } else {
+            const alive = p.update();
+            if (alive) {
+              p.draw();
+            } else {
+              particles.splice(i, 1);
+            }
+          }
+        }
         requestAnimationFrame(animate);
       }
       animate();
